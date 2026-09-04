@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#02070f] text-slate-100 antialiased overflow-hidden select-none;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom scientific dark scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #040d1a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #0c4a6e;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0284c7;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.ocean-workspace {
+  background:
+    radial-gradient(circle at 58% 42%, rgba(14, 165, 233, 0.14), transparent 34%),
+    linear-gradient(135deg, #02070f 0%, #04111f 48%, #02070f 100%);
+}

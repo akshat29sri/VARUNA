@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+xarray
+netCDF4
+numpy
+pandas
+requests
+python-dotenv
+copernicusmarine
+gsw
