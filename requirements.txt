@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+copernicusmarine
+numpy
+pandas
+gsw
+requests
+xarray
+python-dotenv
