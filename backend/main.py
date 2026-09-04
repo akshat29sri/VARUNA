@@ -92,7 +92,7 @@ def subset_netcdf(
     end = (parse_date(date) + timedelta(days=1)).strftime("%Y-%m-%dT00:00:00")
 
     try:
-        copernicusmarine.subset(
+        result = copernicusmarine.subset(
             dataset_id=dataset_id,
             variables=variables,
             minimum_longitude=minimum_longitude,
@@ -111,6 +111,9 @@ def subset_netcdf(
             username=username,
             password=password,
         )
+
+        print("COPERNICUS SUBSET RESULT:")
+        print(result)
     except Exception as exc:
         raise HTTPException(status_code=502, detail=f"Copernicus subset request failed: {exc}") from exc
 
@@ -421,7 +424,12 @@ def model_grid(
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=502, detail=f"Ocean model processing failed: {exc}") from exc
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(
+            status_code=502,
+            detail=f"Copernicus subset request failed: {exc}"
+        ) from exc
 
 
 @app.get("/api/model/profile")
